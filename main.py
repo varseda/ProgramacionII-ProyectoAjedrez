@@ -1,5 +1,6 @@
 from tkinter import *
 from string import ascii_letters
+from Cell import Cell
 
 # Creacion de centana principal
 root = Tk()
@@ -37,37 +38,37 @@ for i in range(0, 8):
 frameBoard = Frame(frameBoardPositions)
 frameBoard.grid(row=1, column=1, rowspan=8, columnspan=8)
 
-listBoard = []
+listBoard = [[None] * 8] * 8
 image0 = PhotoImage(file="Images/frame0.png")
 image1 = PhotoImage(file="Images/frame1.png")
 
 for i in range(0, 8):
-
-    listBoard.append([])
 
     for j in range(0, 8):
 
         if i % 2 == 0:
 
             if j % 2 == 0:
-                listBoard[i].append(
-                    Label(frameBoard, image=image0, borderwidth=0))
-                listBoard[i][j].grid(row=i, column=j)
+
+                listBoard[i][j] = Cell(frame=frameBoard, row=i, column=j)
+                listBoard[i][j].label.config(image=image0)
+
             else:
-                listBoard[i].append(
-                    Label(frameBoard, image=image1, borderwidth=0))
-                listBoard[i][j].grid(row=i, column=j)
+
+                listBoard[i][j] = Cell(frame=frameBoard, row=i, column=j)
+                listBoard[i][j].label.config(image=image1)
 
         else:
 
             if j % 2 == 0:
-                listBoard[i].append(
-                    Label(frameBoard, image=image1, borderwidth=0))
-                listBoard[i][j].grid(row=i, column=j)
+
+                listBoard[i][j] = Cell(frame=frameBoard, row=i, column=j)
+                listBoard[i][j].label.config(image=image1)
+
             else:
-                listBoard[i].append(
-                    Label(frameBoard, image=image0, borderwidth=0))
-                listBoard[i][j].grid(row=i, column=j)
+
+                listBoard[i][j] = Cell(frame=frameBoard, row=i, column=j)
+                listBoard[i][j].label.config(image=image0)
 # ------------------------------------------------------------------------------
 
 
